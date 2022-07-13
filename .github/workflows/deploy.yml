@@ -1,0 +1,20 @@
+# This workflow will install new packages and build to deploy to server
+
+name: Deploy to Server
+
+on:  
+  push:
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v2.4.2
+    - name: Install new packages
+      run: npm install
+    - name: Build next.js project
+      run: npm run build
